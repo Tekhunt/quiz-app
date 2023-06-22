@@ -25,12 +25,10 @@ def fetch_quiz_ids(store: str):
     """
     if not store:
         raise ValueError("The input cannot be empty. Please provide store name or url")
-    # store_name = store.split('/')[2] if store.startswith('http') else store
     print('store is: ',store)
     quiz_ids = get_quiz_ids(store)
 
     if not quiz_ids:
         return {"detail": "Store not found."}
 
-    return Quiz_Respose(store_name=store, quiz_id=quiz_ids)
-
+    return Quiz_Respose(store_name=store, quiz_id=quiz_ids, count=len(quiz_ids))
